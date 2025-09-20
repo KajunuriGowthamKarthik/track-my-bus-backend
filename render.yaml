@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: transittracker-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:///./transit_tracker.db
+      - key: PORT
+        value: 8000
