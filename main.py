@@ -222,7 +222,7 @@ async def lifespan(app: FastAPI):
                 email="driver@test.com",
                 password_hash=get_password_hash("driver123"),
                 role="driver",
-                name="John Driver"
+                name="pragati Driver bus 1"
             )
             db.add(driver_user)
             
@@ -231,7 +231,7 @@ async def lifespan(app: FastAPI):
                 email="passenger@test.com",
                 password_hash=get_password_hash("passenger123"),
                 role="passenger",
-                name="Jane Passenger"
+                name="karthik Passenger"
             )
             db.add(passenger_user)
             
@@ -246,8 +246,8 @@ async def lifespan(app: FastAPI):
             
         # Create sample buses if they don't exist
         if not db.query(Bus).first():
-            bus1 = Bus(bus_number="BUS-001", route_name="Downtown Express", capacity=50, driver_id=1)
-            bus2 = Bus(bus_number="BUS-002", route_name="University Line", capacity=40, driver_id=1)
+            bus1 = Bus(bus_number="BUS-001", route_name="pragati Express 001", capacity=50, driver_id=1)
+            bus2 = Bus(bus_number="BUS-002", route_name="pragati Express 002", capacity=40, driver_id=1)
             db.add(bus1)
             db.add(bus2)
             
@@ -396,7 +396,7 @@ async def get_driver_dashboard(current_user: User = Depends(get_current_user), d
 async def get_nearby_buses(
     lat: float,
     lng: float,
-    radius: float = 10.0,
+    radius: float = 50000.0,
     current_user: User = Depends(get_current_user)
 ):
     if current_user.role != "passenger":
